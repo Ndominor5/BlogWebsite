@@ -42,8 +42,6 @@ app.post("/compose", function(req,res) {
   };
   posts.push(post);
   res.redirect("/");
-  // for (let i = 0; i < posts.length; i++) {
-  //}
 
 });
 
