@@ -35,6 +35,18 @@ app.get("/compose", function(req, res) {
   res.render("compose");
 });
 
+app.get('/blog/:postName', function(req, res) {
+  const requestedTitle = req.params.postName;
+
+  posts.forEach(function(post) { // Use of forEach to loop inside the array and look between titles.
+    const storedTitle = post.title; // How to access the title in the array.
+
+    if (requestedTitle === storedTitle) {
+      console.log("Match Found!");
+    };
+  });
+});
+
 app.post("/compose", function(req,res) {
   const post = {
     title: req.body.newTitle,
