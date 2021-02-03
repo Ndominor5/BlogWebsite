@@ -19,7 +19,8 @@ app.use(express.static("public"));
 let posts = [];
 
 app.get("/", function(req, res) {
-  res.render("home", {homeParagraph: homeStartingContent,
+  res.render("home", {
+    homeParagraph: homeStartingContent,
     posts: posts
   });
 });
@@ -43,10 +44,11 @@ app.get('/blog/:postName', function(req, res) {
     const storedTitle = _.lowerCase(post.title); // How to access the title in the array.
 
     if (requestedTitle === storedTitle) {
-      console.log("Match Found!");
-    } else {
-      console.log("No a Match!");
-    };
+      res.render("post", {
+        postTitle: post.title,
+        postContent: post.content
+      });
+    }
   });
 });
 
